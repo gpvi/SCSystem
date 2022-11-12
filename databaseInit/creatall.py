@@ -1,79 +1,22 @@
+# encoding:utf-8
 import pymysql
 
+student = {"Sno":"0","sname":"root","ssex":"男","Sage":18,"Sdept":"CS"}
+#插入学生信息
+sql1 = """
 
-db = pymysql.connect(
-    host='localhost',
-    user = 'root',
-    password='123456',
-    database='library')
+insert into students(sno, sname, ssex, sage, sdept)
+VALUES ("%s","%s","%s",%d,"%s");
+""" %(student["Sno"],student["sname"],student["ssex"],student["Sage"],student["Sdept"])
+
+print(sql1)
+#插入教师信息
 
 
-#创建游标
-cursor = db.cursor()
-#仓库表
-create_table_respority = """
-CREATE TABLE  if not exists repertory(
+#插入课程信息
 
-`BookISBNId`  char(80) NOT NULL ,
 
-`Stock`  int NOT NULL ,
+#插入选课信息
 
-`BookName`  char(30) NOT NULL ,
 
-`FloorNum`  int NOT NULL ,
-
-PRIMARY KEY (`BookISBNId`, `Stock`)
-)
-;
-"""
-#订单表
-create_table_order = """
-
-CREATE TABLE orders(
- 
-`OrderID`  char(80) NOT NULL ,
- 
-`OrderCusNickname`  char(20) NOT NULL ,
- 
-`OrderCusName`  char(20) NOT NULL ,
- 
-`OrderData`  datetime NOT NULL ,
- 
-`OrderBook`  char(30) NOT NULL ,
- 
-`OrderCount`  int NOT NULL ,
- 
-`OrderSendData`  datetime NOT NULL ,
- 
-PRIMARY KEY (`OrderID`, `OrderCusNickname`)
-);
-"""
-#管理员表
-create_table_manager ="""
-CREATE TABLE managerinfo (
- 
-`ManaID`  char(30) NOT NULL ,
- 
-`ManaName`  char(20) NOT NULL ,
- 
-`ManaPasswd`  char(30) NOT NULL ,
- 
-`ManaIden`  char(20) NOT NULL ,
- 
-`ManaMail`  char(20) NOT NULL ,
- 
-PRIMARY KEY (`ManaID`)
- 
-);"""
-#图书类型表
-create_table_booktype = """
-CREATE TABLE booktypeinfo (
- 
-`BookClass`  char(20) NOT NULL ,
- 
-`BookClassName`  char(20) NOT NULL ,
- 
-PRIMARY KEY (`BookClass`)
- 
-);
-"""
+#插入授课信息
