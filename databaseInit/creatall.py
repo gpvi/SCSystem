@@ -7,7 +7,7 @@ sql1 = """
 
 insert into students(sno, sname, ssex, sage, sdept)
 VALUES ("%s","%s","%s",%d,"%s");
-""" %(student["Sno"],student["sname"],student["ssex"],student["Sage"],student["Sdept"])
+""" %(student["Sno"],student["sname"],student["ssex"],student["Sage"],student["Sage"])
 
 print(sql1)
 #插入教师信息
