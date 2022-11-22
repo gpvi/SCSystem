@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
 </head>
 <body>
-$END$
+    <div id="login">
+        <form method="POST" action="localhost:9090/verfy">
+            <div id="id">
+                账号  <input type="text">
+            </div>
+            <div id="pwd">
+                密码  <input type="password">
+            </div>
+            <div id="sumbmitbutton">
+                <input type="submit" value="登录">
+            </div>
+           
+           {{data}}
+            
+        </form>
+    </div>
+  
 </body>
 </html>
