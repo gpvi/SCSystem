@@ -9,19 +9,22 @@ import __init__
 class user:
 
     def __init__(self,dic):
-        self.id = dic["ID"]
+        self.id = dic["id"]
         self.pwd = dic['password']
-
-    def verify(self):
-
-        if self.pwd == "admin" and self.id == "admin":
-            return True
-        else:
-            return  False
 
     def getdata(self):
 
-        print(self.pwd,self.id)
+        print(self.pwd, self.id)
+
+    def verify(self):
+        pass
+        # test code
+        # if self.pwd == "u1" and self.id == "u1":
+        #     return True
+        # else:
+        #     return  False
+        #调用数据库验证
+
 
 
 # if __name__ == '__main__':

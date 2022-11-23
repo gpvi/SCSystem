@@ -7,20 +7,20 @@
 </head>
 <body>
     <div id="login">
-        <form method="POST" action="localhost:9090/verfy">
+        <form method="POST" action="http://localhost:9090/verfy">
             <div id="id">
-                账号  <input type="text">
+                账号  <input type="text" name="id">
             </div>
             <div id="pwd">
-                密码  <input type="password">
+                密码  <input type="password" name="password">
             </div>
             <div id="sumbmitbutton">
                 <input type="submit" value="登录">
             </div>
-           
-           {{data}}
             
         </form>
+          
+        <br />{{ str  }}
     </div>
   
 </body>

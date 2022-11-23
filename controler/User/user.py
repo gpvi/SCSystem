@@ -11,22 +11,26 @@ userbp = Blueprint("/",__name__)
 
 @userbp.route("/",methods = ['get'])
 def index():
-    return render_template("index.html")
+    return render_template("index.html",str = 1)
 
-@userbp.route("/verfy",methods = ['post'])
+@userbp.route("/varfy",methods = ['POST'])
 def verfy():
+    print(1)
     varfyJson = request.get_json()
     varfydic = dict(varfyJson)
+    print(varfydic)
+    # return  "hello"
+    p = "no"
     if varfydic['id'] == "admin":
         pass
     else:
-        p  = ""
         a = user(varfydic)
-        if a == True:
+        a.getdata()
+        if a.verify() == True:
             p = "OK"
         else:
             p = "Error"
 
-        return render_template("index.html",data = p)
+    return  p;
 
 
