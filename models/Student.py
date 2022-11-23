@@ -5,8 +5,9 @@
 @Time：2022/11/21 18:30\n
 """
 
+
 class Student:
-    def __init__(self,sdic):
+    def __init__(self, sdic):
         self.Sno = sdic['Sno']
         self.Sname = sdic['Sname']
         self.Sage = sdic['Sage']
@@ -14,7 +15,6 @@ class Student:
         self.email = sdic['email']
 
     def add(self):
-
         sql = """
         
         """
@@ -25,13 +25,11 @@ class Student:
         """
 
     def deleteStudent(self):
-
         sql = """
         
         """
+
     def updataStudent(self):
-
-
-        sql ="""
+        sql = """
         
         """

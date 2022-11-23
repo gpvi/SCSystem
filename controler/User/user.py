@@ -1,11 +1,11 @@
 """
-@FileName：user.py\n
+@FileName：User.py\n
 @Description：\n
 @Author：NZQ\n
 @Time：2022/11/22 9:20\n
 """
 from flask import  Flask,request,Blueprint,render_template
-from models.user import user
+from models.User import user
 
 userbp = Blueprint("/",__name__)
 
