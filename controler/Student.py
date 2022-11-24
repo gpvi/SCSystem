@@ -23,3 +23,5 @@ def add_student():
 @student.route("/gettable", methods=['get'])
 def get_sc_tables():
     dic = request.get_json()
+
+@student.route("/")
