@@ -5,6 +5,6 @@
 @Time：2022/11/22 0:18\n
 """
 
-class TCV:
+class TC:
     def __init__(self):
         pass

@@ -6,7 +6,7 @@
 """
 import __init__
 
-class user:
+class User:
 
     def __init__(self,dic):
         self.id = dic["id"]
