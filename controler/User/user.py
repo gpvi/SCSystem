@@ -33,4 +33,22 @@ def verfy():
 
     return  p;
 
+#学生主页
+@userbp.route("/student")
+def stu_index():
+    pass
+
+#学生查询选课结果
+@userbp.route("/student/get")
+def stu_sc_result():
+
+    pass
+#查询所有课程
+@userbp.route("/student/getall")
+def get_all_class():
+    pass
+
+
+
+
 
