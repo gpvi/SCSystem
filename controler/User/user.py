@@ -15,23 +15,7 @@ def index():
 
 @userbp.route("/varfy",methods = ['POST'])
 def verfy():
-    print(1)
-    varfyJson = request.get_json()
-    varfydic = dict(varfyJson)
-    print(varfydic)
-    # return  "hello"
-    p = "no"
-    if varfydic['id'] == "admin":
-        pass
-    else:
-        a = user(varfydic)
-        a.getdata()
-        if a.verify() == True:
-            p = "OK"
-        else:
-            p = "Error"
 
-    return  p;
 
 #学生主页
 @userbp.route("/student")
