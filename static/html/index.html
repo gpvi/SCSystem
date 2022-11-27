@@ -2,39 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+    </script>
     <style>
-        .a{
-            height: 200px;
-            width: 200px;
-            left: 500px;
-            top: 200px;
-            position: absolute;    
+        .cente{
+            margin-top: 200px;
+            margin-bottom: auto;
+            margin-left: 500px;
+            position:absolute;
         }
-        #sumb{
+        #button{
             position: relative;
-            left:90px;
-            top:20px;
+            margin-top: auto;
+            margin-left: 50px;
         }
 
+        
     </style>
-    <link rel="stylesheet" type="text/css" href="../css/uikit.min.css">
 </head>
 <body>
-    <div class="a">
-        <form method="POST" action="http://localhost:9090/verfy">
-            <div id="id">
-                账号  <input type="text" name="id">
-            </div>
-            <div id="pwd">
-                密码  <input type="password" name="password">
-            </div>
-            <div id="sumb">
-                <input type="submit" value="登录">
-            </div>
-            
-        </form>
+    <div class="cente">
+        <h1 id = "title">学生选课系统</h1>
+    <!-- <input type="button" value="登录" onclick=javascript:sign_up> -->
+    <!-- <input type="button" value="注册" onclick=javascript:sign_up> -->
+    <div id = "button">
+       <span>  <a href="./login.html"><button>登录</button></a>   </span> 
+       <span>  <a href="./login.html"><button>注册</button></a>   </span>
     </div>
-  
-</body>
+    </div>
+    
+    
 </html>

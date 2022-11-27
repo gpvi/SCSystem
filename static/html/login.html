@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a{
+            height: 200px;
+            width: 200px;
+            left: 500px;
+            top: 200px;
+            position: absolute;    
+        }
+        #sumb{
+            position: relative;
+            left:90px;
+            top:20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="a">
+        <form method="POST" action="http://localhost:9090/login">
+            <div id="id">
+                账号  <input type="text" name="id">
+            </div>
+            <div id="pwd">
+                密码  <input type="password" name="password">
+            </div>
+            <div id="sumb">
+                <input type="submit" value="登录">
+            </div>
+            
+        </form>
+    </div>
+  
+</body>
+</html>
