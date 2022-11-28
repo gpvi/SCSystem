@@ -30,7 +30,9 @@ def func():
         return {"success":0}
     
 @login.route("/signin",methods = ['POST'])
-
+def signin():
+    data = request.form
+    content = {'id':data['id'],'name':data['name'],'sex':data['sex'],'pwd':data['pwd']}
 
 
 

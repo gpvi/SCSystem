@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="SCDB@localhost" uuid="fb9d95da-0929-4494-8cf3-4ecf06c96685">
+    <data-source source="LOCAL" name="scdb1@localhost" uuid="2021e51d-8f77-4eee-9497-32bcba686dcc">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/SCDB</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/scdb1</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
