@@ -7,39 +7,39 @@
 from sqlconnect import db
 import pymysql
 
-class SignUp:
+class SignIn:
     def __init__(self,dic):
-        self.name = dic['name']
         self.id = dic['id']
         self.pwd = dic['pwd']
-        self.email = dic['email']
-
-
     def sign_up(self):
         curs = db.cursor()
         sql = """
         select * 
         from users
-        # where id="123";
-        """
+        where id="%s";
+        """ % self.id
+
         try:
             curs.execute(sql)
             results = curs.fetchall()
-            print(results)
-            for row in results:
-                fid = row[0]
-                fname = row(1)
-                fpwd = row[2]
-                femail = row[3]
+            result = results[0]
+            password = result[1]
+            if self.pwd == password and self.id == result[0]:
+                print("ok")
+                return True
         except:
             print("error")
+            return False
 
-class SignIn:
+class SignUp:
     pass
 
 
-if __name__ == '__main__':
-    dic = {'id':"123",'name':'123','pwd':456,'email':"aaaa"}
-    signup = SignUp(dic)
 
-    signup.sign_up()
+# if __name__ == '__main__':
+#     dic = {'id':"abq",'pwd':'jxi'}
+#     signIn = SignIn(dic)
+#     if signIn.sign_up():
+#         print('success')
+#     else:
+#         print('fail')

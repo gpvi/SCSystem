@@ -6,47 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #title{
-            color: aliceblue;
+        h1{
+            margin: 20px auto;
+            width: 1000px;
+            color: rgb(24, 25, 26);
             text-align: center;
-            background-color: black;
+            background-color: rgb(255, 255, 255);
             font-size: 30px;
             height: 45px;
+            border-bottom: 5px dashed black;
             
         }
-        .sideblock{
-            border-width: 2px;
-            border-style: solid;
-            border-color: rgb(157, 152, 152);
-            position: absolute;
-            margin-top: 10px;
-            width: 200px;
-            height: 1000px;
-            background-color: rgb(241, 236, 236);
-            color: black;
-        }
-        .block{
-    
-            width: 200px;
-        }
+        #fbox{
+            border: 2px solid black;
 
+            background-color: rgb(235, 235, 247);
+            margin: 0 auto;
+            width: 1200px;
+            height: 600px;
+            text-align: center;
+        }
+        .left{
+            width:200px;
+            height: 600px;
+            background-color: rgb(210, 222, 222);
+            float: left;
+        }
+        .right{
+            width: 1000px;
+            height: 600px;
+            background-color: rgba(119, 187, 206, 0.881);
+            float: left;
+        }
+        table{
+            position: relative;
+            width: 800px;
+            border: solid black 3px;
+            margin-top: 20px;
+        }
+        #titles{
+            position: relative;
+            margin-top: 117px;
+            text-align: center;
+            padding-left: -28px;
+            margin-left: 14px;
+        }
+        ul{
+            background-color: grey;
+            width: 100px;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 2px;
+            border-width: 2px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: grey;
+            text-align: center;
+        }
+        td{
+            border: 1;
+            padding: 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div id = "title">我的选课</div>
-    <span class="sideblock">
+    <h1>我的选课</h1>
+    <div id ="fbox">
+      <div class="left">
 
-        <ul class="block" id="b1">
-            <button>个人信息</button>
-        </ul>
-
-        <ul class="block" id="b2">
-            <button>我的课程</button>
-        </ul>
-        <div>
-            <table ></table>
+        <div id = "titles">
+            <ul>个人信息</ul>
+            <ul>我的选课</ul>
+            <ul>开始选课</ul>
+            
         </div>
-    </span>
+
+      </div>
+      <div class="right">
+        <table  align="center"  id="mydata">
+
+            <thead id="thead">
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>学号</th>
+                    <th>年龄</th>
+                    <th>邮箱</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+
+      </div>
+       
+
+    </div>
 
 </body>
 </html>
