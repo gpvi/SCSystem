@@ -5,13 +5,14 @@
 @Time：2022/11/22 11:14\n
 """
 
-from flask import  Flask,request,render_template
-
-# from controler.User.user import userbp
-
-app = Flask(__name__,template_folder="template")
-
-app.register_blueprint(userbp)
+from flask import Flask,request,render_template
+from os import urandom
+from  controler.login import bplogin
+from  controler.User.student import bpstudent
+app = Flask(__name__)
+app.secret_key = urandom(24)
+app.register_blueprint(bplogin)
+# app.register_blueprint(bpstudent)
 
 
 if __name__ == '__main__':

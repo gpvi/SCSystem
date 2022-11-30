@@ -4,26 +4,27 @@
 @Author：NZQ\n
 @Time：2022/11/21 18:30\n
 """
-
-
-class Student:
-    def __init__(self, sdic):
-        self.Sno = sdic['Sno']
-        self.Sname = sdic['Sname']
-        self.Sage = sdic['Sage']
-        self.Ssex = sdic['Ssex']
-        self.email = sdic['email']
-
-    def add(self):
-        sql = """
-        
-        """
+from sqlconnect import DB
+class Student(DB):
+    def __init__(self,sno):
+        super().__init__()
+        self.Sno = sno
+        self.Sname = ""
+        self.Sage = ""
+        self.Ssex = ""
+        self.email= ""
 
     def getstudent(self):
         sql = """
-        
-        """
-
+         select *
+         from students
+         where sno = '%s';
+        """%(self.Sno)
+        self.curs.execute(sql)
+        data = self.curs.fetchall()
+        # self.db.commit()
+        # self.Ssex=data[0][]
+        print(data)
     def deleteStudent(self):
         sql = """
         
@@ -33,3 +34,6 @@ class Student:
         sql = """
         
         """
+if __name__ == '__main__':
+    a = Student("00123")
+    a.getstudent()

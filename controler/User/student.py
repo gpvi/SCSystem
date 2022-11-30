@@ -8,12 +8,10 @@ from flask import Flask,Blueprint,request
 from models.Student import Student
 import json
 
-bpstudent = Blueprint("/user",__name__)
+bpstudent = Blueprint("/student",__name__)
 
-@bpstudent.route("/post",methods = ['post'])
+@bpstudent.route("/mydata",methods = ['get'])
 def getdata():
-    data_json = request.json()
-    stu_dic = dict(data_json)
-    stu = Student(stu_dic)
-    return stu.getstudent()
+    return "pk"
+    return
 
