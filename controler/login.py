@@ -25,7 +25,7 @@ def func():
         if sign.sign_in():
             # #会话开启
             # # session['id'] = sign.id
-            print("SUCESS")
+            # print("SUCESS")
             htmlfile = render_template("myclasses.html")
             # print(htmlfile)
             try:
