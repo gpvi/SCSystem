@@ -18,8 +18,9 @@ def add():
 
 
 
-@adminbp.route("/del")
+# @adminbp.route("/del")
+#
+# @adminbp.route("update")
+#
+# @adminbp.route("get")
 
-@adminbp.route("update")
-
-@adminbp.route("get")

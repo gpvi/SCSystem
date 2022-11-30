@@ -24,7 +24,12 @@ class Student(DB):
         data = self.curs.fetchall()
         # self.db.commit()
         # self.Ssex=data[0][]
-        print(data)
+        # print(data[0])
+        stu = data[0]
+        # print(stu)
+        dic = {"sno":stu[0],"name":stu[1],"sex":stu[2],'age':stu[3],'email':stu[4]}
+        return dic
+        # print(dic)
     def deleteStudent(self):
         sql = """
         

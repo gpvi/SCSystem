@@ -12,7 +12,7 @@ from  controler.User.student import bpstudent
 app = Flask(__name__)
 app.secret_key = urandom(24)
 app.register_blueprint(bplogin)
-# app.register_blueprint(bpstudent)
+app.register_blueprint(bpstudent)
 
 
 if __name__ == '__main__':

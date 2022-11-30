@@ -10,6 +10,9 @@
     <title>选课系统</title>
     <!-- <script src="../jquery/dist/jquery.min.js"></script> -->
     <style>
+        li{
+            list-style-type: none
+        }
         h1{
             margin: 20px auto;
             width: 1000px;
@@ -23,8 +26,8 @@
         }
         #fbox{
             border: 2px solid black;
-
-            background-color: rgb(235, 235, 247);
+            cursor:pointer;
+            background-color: rgb(239, 239, 241);
             margin: 0 auto;
             width: 1200px;
             height: 600px;
@@ -33,7 +36,7 @@
         .left{
             width:200px;
             height: 600px;
-            background-color: rgb(210, 222, 222);
+            background-color: rgb(212, 228, 228);
             float: left;
         }
         .right{
@@ -53,10 +56,11 @@
             margin-top: 117px;
             text-align: center;
             padding-left: -28px;
-            margin-left: 14px;
+            margin-left: -9px;
         }
-        ul{
-            background-color: grey;
+        
+        .current{
+            background-color: rgb(93, 87, 87);
             width: 100px;
             margin-top: 10px;
             margin-left: 10px;
@@ -66,13 +70,33 @@
             border-width: 2px;
             border-radius: 10px;
             border-style: solid;
-            border-color: grey;
+            border-color: rgb(128, 128, 128);
+            text-align: center;
+        }
+        li{
+            background-color: rgb(143, 140, 140);
+            width: 100px;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 2px;
+            border-width: 2px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: rgb(128, 128, 128);
             text-align: center;
         }
         td{
-            border: 1;
+            border: 1px;
             padding: 0;
             text-align: center;
+        }
+        ul{
+            margin-left: -6px;
+        }
+        .tables{
+            display: none;
         }
     </style>
 </head>
@@ -81,47 +105,137 @@
     <div id ="fbox">
       <div class="left">
 
-        <div id = "titles">
-            <ul>个人信息</ul>
-            <ul>我的选课</ul>
-            <ul>开始选课</ul>
+            <div id = "titles">
+            <ul>
+                <li id="mydata" class="current">个人信息</li>
+                <li id="myclass">        我的选课</li>
+                <li id="allclass">       开始选课</li>
+            </ul>
+           
             
-        </div>
+      </div>
 
       </div>
       <div class="right">
-        <table  align="center"  id="mydata">
+        <div class="tables" style="display:block">
+            <table  align="center"  id="mydata"  >
 
-            <thead id="thead">
-                <tr>
-                    <th>姓名</th>
-                    <th>年龄</th>
-                    <th>学号</th>
-                    <th>年龄</th>
-                    <th>邮箱</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
+                <thead id="thead">
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>学号</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
 
-            </tbody>
+        <div class="tables">
+            <table  align="center"  id="mydata" >
 
-        </table>
+                <thead id="thead">
+                    <tr>
+                        <th>课程</th>
+                        <th>学分</th>
+                        <th>成绩</th>
+                        <th>课时</th>
+                        <th>授课老师</th>
+                        <th>时间</th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="tables">
+            <table  align="center"  id="mydata" >
 
+                <thead id="thead">
+                    <tr>
+                        <th>课程</th>
+                        <th>学分</th>
+                        <th>课时</th>
+                        <th>授课老师</th>
+                        <th>限选人数</th>
+                        <th>剩余</th>
+                        <th>时间</th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
 
       </div>
-       
-
     </div>
-    
+<!-- tab -->
     <script>
+        var table_lis = document.querySelector(".left");
+        var lis = table_lis.querySelectorAll('li');
+        var tables = document.querySelectorAll(".tables");
         
-        var cookie = document.cookie;
-        //console.log(cookie)
-        //alert(cookie)
-        var a = $.cookie('id')
-        console.log(a)
-        //console.log(cookie,co) -->
+        for(var i=0;i<lis.length;i++){
+            var m = i;
+            lis[i].setAttribute("index",i);
+            lis[i].onclick = function(){
+                //关闭 其他
+                for(var j=0;j<lis.length;j++)
+                {
+                    lis[j].className=""
+                    tables[j].style.display="none"
+                }
+                this.className="current"
+                var index = this.getAttribute('index')
+                //console.log(index)
+                //console.log(tables,m)
+                tables[index].style.display = "block"
+            }
+        }
+    </script>
+
+<!-- 填充表格 -->
+    <script>
+        $(document).ready(function()
+        {
+                $.get("http://localhost:9090/mydata",function(result,status)
+                {
+                        //<!-- var t= eval("("+data+")"); -->
+                    var tbody = document.querySelector("tbody");
+                    for(let i = 0;i<result.length;i++)
+                    {
+            
+                        var tr = document.createElement('tr');
+                        tbody.appendChild(tr);
+                        var name = document.createElement('td');
+                        var age = document.createElement('td');
+                        var sno = document.createElement('td');
+                        var sex = document.createElement('td');
+                        var email = document.createElement('td');
+                        name.innerHTML= result[i]['name'];
+                        age.innerHTML= result[i]['age'];
+                        sno.innerHTML= result[i]['sno'];
+                        sex.innerHTML= result[i]['sex'];
+                        email.innerHTML= result[i]['email'];
+                        tr.appendChild(name);
+                        tr.appendChild(age);
+                        tr.appendChild(sno);
+                        tr.appendChild(sex);
+                        tr.appendChild(email);
+                    }
+                            
+                })
+    
+            })
     </script>
 </body>
 </html>
