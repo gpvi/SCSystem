@@ -6,7 +6,7 @@
 """
 from Student import Student
 from Teacher import Teacher
-from SCView import SC
+from SC import SC
 from User import User
 from TCView import TC
 

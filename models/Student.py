@@ -39,6 +39,6 @@ class Student(DB):
         sql = """
         
         """
-if __name__ == '__main__':
-    a = Student("00123")
-    a.getstudent()
+# if __name__ == '__main__':
+#     a = Student("00123")
+#     a.getstudent()
