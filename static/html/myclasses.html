@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
     <title>选课系统</title>
     <!-- <script src="../jquery/dist/jquery.min.js"></script> -->
     <style>
@@ -58,7 +57,7 @@
             padding-left: -28px;
             margin-left: -9px;
         }
-        
+ 
         .current{
             background-color: rgb(93, 87, 87);
             width: 100px;
@@ -89,7 +88,7 @@
         }
         td{
             border: 1px;
-            padding: 0;
+            padding: 2px;
             text-align: center;
         }
         ul{
@@ -130,13 +129,13 @@
                         
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody id = "body1">
+                </tbodyid>
             </table>
         </div>
 
         <div class="tables">
-            <table  align="center"  id="mydata" >
+            <table  align="center"  id="mysc" >
 
                 <thead id="thead">
                     <tr>
@@ -150,28 +149,29 @@
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id ="body2">
                 </tbody>
             </table>
         </div>
         
         <div class="tables">
-            <table  align="center"  id="mydata" >
+            <table  align="center"  id="sc" >
 
                 <thead id="thead">
                     <tr>
+                        <th>课程号</th>
                         <th>课程</th>
                         <th>学分</th>
                         <th>课时</th>
                         <th>授课老师</th>
-                        <th>限选人数</th>
-                        <th>剩余</th>
                         <th>时间</th>
-                        
+                        <th>限选人数</th>
+                        <th>剩余<th>
+            
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id = body3>
                 </tbody>
             </table>
         </div>
@@ -210,7 +210,7 @@
                 $.get("http://localhost:9090/user/mydata",function(result,status)
                 {
                         //<!-- var t= eval("("+data+")"); -->
-                    var tbody = document.querySelector("tbody");
+                    var tbody = document.querySelector("#body1");
                     for(let i = 0;i<result.length;i++)
                     {
             
@@ -236,6 +236,98 @@
                 })
     
             })
+    </script>
+    <script>
+        $(document).ready(function()
+        {
+                $.get("http://localhost:9090/user/getmysc",function(result,status)
+                {
+                        //<!-- var t= eval("("+data+")"); -->
+                    var tbody = document.querySelector("#body2");
+                    for(let i = 0;i<result.length;i++)
+                    {
+            
+                        var tr = document.createElement('tr');
+                        tbody.appendChild(tr);
+                        var cname = document.createElement('td');
+                        var tname= document.createElement('td');
+                        var credit = document.createElement('td');
+                        var chours = document.createElement('td');
+                        var grade = document.createElement('td');
+                        var time = document.createElement('td');
+                      
+                        cname.innerHTML= result[i]['cname'];
+                        tname.innerHTML= result[i]['tname'];
+                        credit.innerHTML= result[i]['credit'];
+                        chours.innerHTML= result[i]['chours'];
+                        grade.innerHTML= result[i]['grade'];
+                        time.innerHTML= result[i]['time'];
+                        tr.appendChild(cname);
+                        tr.appendChild(credit);
+                        tr.appendChild(grade);
+                        tr.appendChild(chours);
+                        tr.appendChild(tname);
+                        tr.appendChild(time);
+                    }
+                            
+                })
+    
+            })
+    </script>
+    <script>
+        $(document).ready(function()
+        {
+                $.get("http://localhost:9090/user/getallclass",function(result,status)
+                {
+                        //<!-- var t= eval("("+data+")"); -->
+                    var tbody = document.querySelector("#body3");
+                    for(let i = 0;i<result.length;i++)
+                    {
+            
+                        var tr = document.createElement('tr');
+                        tbody.appendChild(tr);
+                        var cid = document.createElement('td');
+                        var cname = document.createElement('td');
+                        var tname= document.createElement('td');
+                        var credit = document.createElement('td');
+                        var chours = document.createElement('td');
+                        var maxnum = document.createElement('td');
+                        var leftnum = document.createElement('td');
+                        var time = document.createElement('td');
+                        var last = document.createElement('td')
+                        var button = document.createElement('button')
+                        button.innerHTML ="选择"
+                        cid.innerHTML=result[i]['cid']
+                        cname.innerHTML= result[i]['cname'];
+                        tname.innerHTML= result[i]['tname'];
+                        credit.innerHTML= result[i]['credit'];
+                        chours.innerHTML= result[i]['chours'];
+                        leftnum.innerHTML= result[i]['leftnum'];
+                        maxnum.innerHTML= result[i]['maxnum'];
+                        time.innerHTML= result[i]['time'];
+                        last.append(button)
+                    
+                        tr.appendChild(cid);
+                        tr.appendChild(cname);
+                        tr.appendChild(credit);
+                        tr.appendChild(chours);
+                        tr.appendChild(tname);
+                        tr.appendChild(time);
+                        tr.appendChild(maxnum);
+                        tr.appendChild(leftnum);
+                        //tr.append(button)
+                        tr.appendChild(button)
+                        //tr.appendChild(button);
+                        
+                    }
+                   
+                })
+             
+    
+            })
+    </script>
+    <script>
+
     </script>
 </body>
 </html>

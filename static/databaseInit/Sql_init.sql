@@ -127,3 +127,11 @@ ALTER TABLE scdb1.users COMMENT '普通用户';
 ALTER TABLE scdb1.users MODIFY id CHAR(9)  NOT NULL   COMMENT '用户ID----学号';
 
 ALTER TABLE scdb1.users MODIFY password CHAR(8)  NOT NULL   COMMENT '密码';
+
+create view my_sc as
+SELECT s1.`Sno`,c.`Cname`, t1.`Tname`, c.`Credit`, c.`Chours`, s.grade,t.`time`
+FROM scdb1.`Courses` c
+	INNER JOIN scdb1.sc s ON ( s.cno = c.`Cno`  )
+	INNER JOIN scdb1.`Students` s1 ON ( s1.`Sno` = s.sno  )
+	INNER JOIN scdb1.tc t ON ( t.cno = c.`Cno`  )
+	INNER JOIN scdb1.`Teachers` t1 ON ( t1.`Tno` = t.tno  )
