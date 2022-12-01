@@ -63,7 +63,7 @@ def signup():
 
 @bplogin.route("/turnsignup")
 def turnsignup():
-    return send_file("../static/html/sign_up.html")
+    return send_file("static\\html\\sign_up.html")
 
 
 # if __name__ == '__main__':

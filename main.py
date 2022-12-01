@@ -8,11 +8,11 @@
 from flask import Flask,request,render_template
 from os import urandom
 from  controler.login import bplogin
-from  controler.User.student import bpstudent
+from  controler.User.user import bpuser
 app = Flask(__name__)
 app.secret_key = urandom(24)
 app.register_blueprint(bplogin)
-app.register_blueprint(bpstudent)
+app.register_blueprint(bpuser)
 
 
 if __name__ == '__main__':

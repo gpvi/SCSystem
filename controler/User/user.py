@@ -1,5 +1,5 @@
 """
-@FileName：student.py\n
+@FileName：user.py\n
 @Description：\n
 @Author：NZQ\n
 @Time：2022/11/22 0:19\n
@@ -9,12 +9,10 @@ from flask_cors import CORS
 from models.Student import Student
 import json
 
-bpstudent = Blueprint("/student",__name__,template_folder="../static/html")
-
-
+bpuser = Blueprint("user", __name__, template_folder="../static/html",url_prefix="/user")
 # bpstudent = Flask(__name__)
-CORS(bpstudent)
-@bpstudent.route("/mydata",methods = ['GET'])
+CORS(bpuser)
+@bpuser.route("/mydata", methods = ['GET'])
 def getdata():
     id =  request.cookies.get('id')
     stu = Student(id)
