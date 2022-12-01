@@ -8,7 +8,7 @@ from Student import Student
 from Teacher import Teacher
 from SC import SC
 from User import User
-from TCView import TC
+from TC import TC
 
 class Admin:
     def __init__(self):

@@ -28,6 +28,7 @@ class SignIn(DB):
                 print("ok")
                 return True
         except Exception as e:
+            self.db.rollback()
             print("error",e)
             return False
 
@@ -54,15 +55,16 @@ class SignUp(DB):
         VALUE ('%s','%s','%s');
         """%(self.id,self.pwd,self.name)
         # print(sql,sql1)
-
-        curs = self.curs
-        curs.execute(sql)
-        curs.execute(sql1)
-        self.db.commit()
+        try:
+            curs = self.curs
+            curs.execute(sql)
+            curs.execute(sql1)
+            self.db.commit()
+        except Exception as e:
+            self.db.rollback()
+            print(e,"注册错误")
         # print("ok")
         # 用户信息
-    def varfy_exist(self):
-        pass
 
 # if __name__ == '__main__':
 #     dic = {'id':"abq",'pwd':'jxi'}
