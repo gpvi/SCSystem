@@ -11,6 +11,17 @@ from models.sign import SignIn, SignUp
 bplogin = Blueprint('login', __name__, template_folder="../static/html")
 # bplogin = Flask(__name__,template_folder="../static/html")
 
+
+@bplogin.route("/",methods=['get'])
+def funcindex():
+    return send_file("static\\html\\index.html")
+@bplogin.route('/returnlg',methods=['get'])
+def funcrl():
+    return  send_file("static\\html\\login.html")
+@bplogin.route("/returnsp",methods=['get'])
+def funcsp():
+    return send_file("static\\html\\sign_up.html")
+
 @bplogin.route("/login", methods=['POST'])
 def func():
     data = request.form

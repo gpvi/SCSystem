@@ -51,9 +51,27 @@ def getall():
 @bpuser.route("/choseclass",methods=['POST'])
 def chose():
     sno = request.cookies.get('id')
-    cno = request.get
+    data = request.form
+    cno = data['cno']
+    # print(type(data['cno']))
+    # print(sno)
+    sc = SC(sno,cno)
+    sc.addsc()
+    return "ok"
 
+@bpuser.route("/dropclass",methods=['post'])
+def dropclass():
+    sno = request.cookies.get('id')
+    cno = request.form['cno']
+    sc = SC(sno,cno)
+    f = 0;
+    try:
+        sc.drop_class()
+    except Exception as e:
+        print("删除课程失败")
+        f = 1;
 
+    return f;
 
 # if __name__ == '__main__':
 #     bpstudent.run(port=9090,debug=True)

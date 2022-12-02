@@ -139,12 +139,25 @@
 
                 <thead id="thead">
                     <tr>
+                        <!-- 1 -->
+                        <th>课程号</th>
+                        <!-- 2 -->
                         <th>课程</th>
+                        <!-- 3 -->
                         <th>学分</th>
+                        <!-- 4-->
                         <th>成绩</th>
+                        <!-- 5-->
                         <th>课时</th>
+                        <!-- 6 -->
                         <th>授课老师</th>
+                        <!-- 7 -->
+                        <th>教材</th>
+                        <!-- 8-->
                         <th>时间</th>
+                        <!-- 9-->
+                        <th>退选</th>
+            
                         
                         
                     </tr>
@@ -167,18 +180,65 @@
                         <th>时间</th>
                         <th>限选人数</th>
                         <th>剩余<th>
-            
+                        
                         
                     </tr>
                 </thead>
-                <tbody id = body3>
+                <tbody id = body3 class="ch">
                 </tbody>
             </table>
         </div>
 
       </div>
     </div>
-<!-- tab -->
+    <script>
+       $("#body2").on('click','.but',function(){
+
+            var fbut = $(this).parents("tr").children(".cno").html()
+            $(this).css("cursor","not-allowed")
+            $(this).css("pointer-events","none")
+            $(this).css("background-color","grey")
+            //console.log(typeof(fbut))
+            var request={
+                cno : fbut
+            }
+            $.ajax({
+                url:"http://localhost:9090/user/dropclass",
+                type:"POST",
+                data:request,
+                async:false,
+                success:function(){
+                    console.log("ok")
+                    location.reload()
+                }
+            })
+        })
+
+    </script>*/
+    <script>
+        $("#body3").on('click','.but',function(){
+
+            var fbut = $(this).parents("tr").children(".cno").html()
+            //console.log(typeof(fbut))
+            var request={
+                cno : fbut
+            }
+            $.ajax({
+                url:"http://localhost:9090/user/choseclass",
+                type:"POST",
+                data:request,
+                async:false,
+                success:function(){
+                    console.log("ok")
+                    location.reload()
+                }
+            })
+        })
+
+    </script>
+   
+    <!-- tab -->
+    
     <script>
         var table_lis = document.querySelector(".left");
         var lis = table_lis.querySelectorAll('li');
@@ -249,25 +309,41 @@
             
                         var tr = document.createElement('tr');
                         tbody.appendChild(tr);
+                        var cno = document.createElement('td')
                         var cname = document.createElement('td');
                         var tname= document.createElement('td');
                         var credit = document.createElement('td');
                         var chours = document.createElement('td');
                         var grade = document.createElement('td');
+                        var book = document.createElement('td')
                         var time = document.createElement('td');
-                      
+                        var last = document.createElement('td')
+                        console.log(result)
+
+                        var button = document.createElement('button')
+
+                        button.innerHTML="退选"
+                        cno .innerHTML=result[i]['cno']
                         cname.innerHTML= result[i]['cname'];
                         tname.innerHTML= result[i]['tname'];
                         credit.innerHTML= result[i]['credit'];
                         chours.innerHTML= result[i]['chours'];
                         grade.innerHTML= result[i]['grade'];
+                        book.innerHTML = result[i]['book']
                         time.innerHTML= result[i]['time'];
+                        cno.setAttribute("class","cno")
+                        button.setAttribute("class","but")
+
+                        tr.appendChild(cno);
                         tr.appendChild(cname);
                         tr.appendChild(credit);
                         tr.appendChild(grade);
                         tr.appendChild(chours);
                         tr.appendChild(tname);
+                        tr.appendChild(book)
                         tr.appendChild(time);
+                        last.append(button)
+                        tr.appendChild(last)
                     }
                             
                 })
@@ -305,6 +381,9 @@
                         leftnum.innerHTML= result[i]['leftnum'];
                         maxnum.innerHTML= result[i]['maxnum'];
                         time.innerHTML= result[i]['time'];
+                        button.setAttribute("class","but")
+                        cid.setAttribute("class","cno")
+                        cname.setAttribute("class","cname")
                         last.append(button)
                     
                         tr.appendChild(cid);
@@ -322,12 +401,7 @@
                     }
                    
                 })
-             
-    
             })
-    </script>
-    <script>
-
     </script>
 </body>
 </html>
